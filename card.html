@@ -55,14 +55,37 @@
         span{
             color: crimson;
         }
-        small{
+        h3 + small{
             display: block;
-            margin-bottom: 30px;
+            margin-bottom: 10px;
         }
         .brands{
             display: flex;
-            margin: 0 65px;
+            align-items: center;
+            margin: 0 65px 10px;
             gap: 1.5rem;
+        }
+        small + small{
+            font-size: 10px;
+            margin-bottom: 20px;
+            color: #4f4f4f;
+        }
+        .brands + a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: .3rem;
+            font-weight: 400;
+            text-decoration: none;
+            font-size: 14px;
+            color: blue;
+            transition: .5s ease;
+        }
+        .brands + a:hover{
+            color:  red;
+        }
+        .brands + a img{
+            width: 15px;
         }
     </style>
 </head>
@@ -74,11 +97,13 @@
         <h2>Bakare Brilliant</h2>
         <h3><span>F</span>rontend Web <br> Development Intern</h3>
         <small>bacarybricoded<span>@</span>gmail.com</small>
+        <small>Contact me via any of these handles</small>
         <div class="brands">
-            <img src="./github.svg">
-            <img src="./linkedin.svg">
-            <img src="./twitter.svg">
+            <a href=""><img src="./github.svg"></a>
+            <a href=""><img src="./linkedin.svg"></a>
+            <a href=""><img src="./twitter.svg"></a>
         </div>
+        <a href="">Check out my Portfolio <img src="./arrow-right-solid.svg"></a>
     </div>
 </body>
 </html>
