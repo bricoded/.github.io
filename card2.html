@@ -4,36 +4,172 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
     <title>Document</title>
     <style>
         *{
             padding: 0;
             margin: 0;
             box-sizing: border-box;
+            font-family: 'poppins', sans-serif;
         }
         body{
             width: 100%;
             min-height: 100vh;
+            background: #e0e0e0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         .card{
             width: 405px;
+            min-height: 540px;
+            border-radius: 20px;
+            box-shadow:  25px 25px 50px #cacaca, -25px -25px 50px #f6f6f6;
+            padding: 40px;
+            text-align: center;
+            transition: 3s ease;
+        }
+        .card:hover{
+            box-shadow:  9px 9px 18px #9f9f9f, -9px -9px 18px #ffffff;
         }
         nav{
+            width: 100%;
             display: flex;
             align-items: center;
-            justify-content: spac;
+            justify-content: space-between;
+            margin-bottom: 10px;
         }
-        nav img:first-child{
-            transform: rotate(180deg);
+        nav i{
+            width: 25px;
+            cursor: pointer;
+        }
+        .user{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            background: linear-gradient(145deg, #f0f0f0, #cacaca);
+            box-shadow:  6px 6px 12px #c7c7c7, -6px -6px 12px #f9f9f9;
+        }
+        .user img{
+            width: 85%;
+            border-radius: 50%;
+        }
+        h2{
+            font-size: 28px;
+            font-weight: 500;
+        }
+        h3{
+            font-weight: 400;
+            color: #585858;
+        }
+        .icons{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 20px 0;
+        }
+        .icons i{
+            cursor: pointer;
+            font-size: 23px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: inset -8px -8px 8px #d3d3d3, inset 8px 8px 8px #ededed;
+            transition: .5s ease;
+        }
+        .icons i:hover{
+            background: linear-gradient(145deg, #cacaca, #f0f0f0);
+            box-shadow:  3px 3px 7px #dcdcdc, -3px -3px 7px #e4e4e4;
+            transform: scale(.8);
+        }
+        .fa-facebook-f{
+            color: #1877F2;
+        }
+        .fa-twitter{
+            color: #1DA1F2;
+        }
+        .fa-instagram{
+            color: #d2a0b4;
+        }
+        .fa-youtube{
+            color: #FF0000;
+        }
+        .btn{
+            display: flex;
+            gap: 1rem;
+        }
+        .btn button{
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #585858;
+            width: 50%;
+            height: 50px;
+            border-radius: 10px;
+            background: #e0e0e0;
+            box-shadow: inset -9px -9px 9px #d9d9d9, inset 9px 9px 9px #e7e7e7;
+            transition: .5s ease;
+        }
+        .btn button:hover{
+            box-shadow: inset 10px 10px 20px #d3d3d3, inset -10px -10px 20px #ededed;
+        }
+        .remarks{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            margin-top: 20px;
+            font-size: 17px;
+        }
+        .remarks div:nth-child(2){
+            border-right: 2px solid #585858;
+            border-left: 2px solid #585858;
         }
     </style>
 </head>
 <body>
     <div class="card">
         <nav>
-            <img src="./arrow-right-solid.svg" width="15px">
-            <img src="./ellipsis-vertical-solid.svg" height="25px">
+            <i class="fa-solid fa-arrow-left"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
         </nav>
+        <div class="user">
+            <img src="./OIP.jpeg">
+        </div>
+        <h2>CodingNepal</h2>
+        <h3>Designer & Developer</h3>
+        <div class="icons">
+            <i class="fa-brands fa-facebook-f"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-youtube"></i>
+        </div>
+        <div class="btn">
+            <button>Message</button>
+            <button>Subscribe</button>
+        </div>
+        <div class="remarks">
+            <div>
+                <i class="fa-regular fa-heart"></i>
+                <span>20.4k</span>
+            </div>
+            <div>
+                <i class="fa-regular fa-comment"></i>
+                <span>14.3k</span>
+            </div>
+            <div>
+                <i class="fa-solid fa-share"></i>
+                <span>12.8k</span>
+            </div>
+        </div>
     </div>
 </body>
 </html>
