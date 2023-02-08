@@ -2,10 +2,14 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
 }
 html{
     font-size: 10px;
-    font-family: montserrat, sans-serif;
+    font-family: 'montserrat', sans-serif;
+}
+body{
+    overflow-x: hidden;
 }
 a{
     text-decoration: none;
@@ -33,8 +37,8 @@ p{
     font-weight: 300;
     letter-spacing: .05rem;
 }
-.brand{
-    font-size: 3rem;
+.brand, .brand a{
+    font-size: 2rem;
     text-transform: uppercase;
     color: white;
 }
@@ -68,6 +72,133 @@ p{
 .section-title span{
     color: crimson;
 }
+
+/* nav section  */
+#header{
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: auto;
+}
+#header .header{
+    min-height: 8vh;
+    transition: .3s ease background-color;
+}
+.header .nav-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    max-width: 1300px;
+    padding: 0 10px;
+}
+#header .nav-list ul{
+    list-style: none;
+    position: absolute;
+    background-color: rgb(31, 30, 30);
+    width: 100vw;
+    height: 100vh;
+    left: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2.5rem;
+    z-index: 1;
+    overflow-x: hidden;
+    transition: .5s ease left;
+}
+#header .nav-list ul.active{
+    left: 0;
+}
+#header .nav-list ul a{
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: .2rem;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    display: block;
+}
+#header .nav-list ul a::after{
+    content: attr(data-after);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    color: rgba(240, 248, 255, 0.021);
+    font-size: 13rem;
+    letter-spacing: 50px;
+    z-index: -1;
+    transition: .3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after{
+    transform: translate(-50%, -50%) scale(1);
+    letter-spacing: initial;
+}
+#header .nav-list ul li:hover a{
+    color: crimson;
+}
+#header .hamburger{
+    z-index: 100;
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+    border: 3px solid white;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transform: scale(.7);
+    margin-right: 20px;
+}
+#header .hamburger::after{
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 3px solid white;
+    animation: hamburger-pulse 1s ease infinite;
+}
+#header .hamburger .bar{
+    height: 2px;
+    width: 30px;
+    position: relative;
+    background-color: #fff;
+    z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before{
+    content: '';
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    background-color: white;
+    transition: .3s ease;
+    transition-property: top, bottom;
+}
+#header .hamburger .bar::after{
+    top: 8px;
+}
+#header .hamburger .bar::before{
+    bottom: 8px;
+}
+#header .hamburger.active .bar::before{
+    bottom: 0;
+}
+#header .hamburger.active .bar::after{
+    top: 0;
+}
+/* end nav section  */
+
 /* hero section */
 #hero{
     background-image: url(./images/one-page-website/hero-bg.png);
@@ -84,11 +215,12 @@ p{
     width: 100%;
     height: 100%;
     background-color: black;
-    opacity: .7;
+    opacity: .9;
     z-index: -1;
 }
 #hero .hero{
     max-width: 1200px;
+    width: 1000px;
     margin: 0 auto;
     padding: 0 50px;
     justify-content: flex-start;
@@ -141,6 +273,10 @@ p{
     margin: 0 auto;
     padding: 100px 0;
 }
+#services .service-top{
+    max-width: 500px;
+    margin: 0 auto;
+}
 #services .service-bottom{
     display: flex;
     align-items: center;
@@ -171,7 +307,7 @@ p{
     width: 100%;
     border-radius: 10px;
     background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
-    opacity: .8;
+    opacity: .9;
     z-index: -1;
 }
 #services .service-item .icon{
@@ -270,10 +406,16 @@ p{
     text-align: center;
     margin: 0 auto;
     padding: 100px 20px;
+    max-width: 900px;
 }
 #about .col-left{
     width: 250px;
     height: 360px;
+}
+#about .col-left .about-img img{
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 #about .col-left .about-img{
     position: relative;
@@ -358,6 +500,7 @@ p{
     flex-direction: column;
     padding: 50px 0 10px;
     margin-top: 100px;
+    text-align: center;
 }
 #footer .footer h2{
     color: white;
@@ -368,6 +511,7 @@ p{
 }
 #footer .footer .social-icon{
     display: flex;
+    align-items: c;
     margin: 20px 0 15px;
 }
 #footer .footer .social-item{
@@ -403,6 +547,16 @@ p{
 /* end footer */
 
 /* keyframes */ 
+@keyframes hamburger-pulse{
+    0%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(1.4)
+    }
+}
 @keyframes text_reveal_box{
     50%{
         width: 100%;
@@ -425,3 +579,163 @@ p{
     }
 }
 /* End keyframes */
+
+/* Media Quuery for tablet */
+@media only screen and (min-width: 768px){
+    .ctn{
+        font-size: 2.5rem;
+        padding: 20px 60px;
+    }
+    h1.section-title{
+        font-size: 6rem;
+    }
+    .header .nav-bar{
+        max-width: 90vw;
+        margin: auto;
+    }
+    /* Hero */
+    #hero h1{
+        font-size: 5rem;
+    }
+    /*end  Hero */
+
+    /* sercices */
+    #services .service-bottom .service-item{
+        flex-basis: 45%;
+        margin: 2.5%;
+    }
+    /* end sercices */
+
+    /* project */
+    #projects .project-item{
+        height: 400px;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+        flex-direction: row;
+    }
+    #projects .project-item:nth-child(even){
+        flex-direction: row-reverse;
+    }
+    #projects .all-projects .project-info{
+        height: 100%;
+        width: 50%;
+    }
+    #projects .all-projects .project-img{
+        height: 100%;
+        width: 50%;
+    }
+    /* end project */
+
+    /* about section */
+    #about .about{
+        flex-direction: row;
+    }
+    #about .col-left{
+        width: 600px;
+        height: 400px;
+        padding-left: 60px;
+    }
+    #about .about .col-left .about-img::after{
+        left: -45px;
+        top: 30px;
+        height: 98%;
+        width: 98%;
+        border: 10px solid crimson;
+    }
+    #about .col-right{
+        text-align: left;
+        padding: 30px;
+    }
+     #about .col-right h1{
+        text-align: left;
+     }
+    /* end about section */
+
+    /* contact */
+    #contact .contact-items{
+        display: flex;
+        width: 100%;
+        padding: 0 20px;
+        margin: 80px auto 60px;
+        max-width: 1000px;
+        gap: 2rem;
+    }
+    #contact .contact-item{
+        margin: 0;
+        padding: 20px 30px;
+        min-width: 30%;
+    }
+    #contact .contact-item h1{
+        font-size: 2rem;
+    }
+    #contact .contact-item h2{
+        font-size: 1.3rem;
+    }
+    /* end contact */
+}
+/* endMedia Quuery for tablet*/
+
+/* media query for laptop */
+@media only screen and (min-width: 1200px){
+    /* header */
+    .header .nav-bar{
+        padding: 12px 120px;
+    }
+    #header .hamburger{
+        display: none;
+    }
+    #header .nav-list ul{
+        position: initial;
+        display: block;
+        height: auto;
+        width: fit-content;
+        background-color: transparent;
+    }
+    #header .nav-list ul li{
+        display: inline-block;
+    }
+    #header .nav-list ul a{
+        font-size: 1.5rem;
+        padding: 15px;
+    }
+    #header .nav-list ul a::after{
+        display: none;
+    }
+    /* end header */
+
+    /* about */
+    #contact .contact-item{
+        flex-direction: row;
+        padding: 40px 30px;
+        min-width: 30%;
+        align-items: center;
+    }
+    #contact .contact-item .icon{
+
+    }
+    #contact .contact-item  .contact-info{
+        text-align: left;
+    }
+    #contact .contact-item:first-child .icon{
+        margin-left: 0;
+    }
+    #contact .contact-item:first-child .icon img{
+        height: 50px;
+        width: 50px;
+    }
+    #contact .contact-item .icon img{
+        min-width: 60px;
+        min-height: 60px;
+    }
+    #contact .contact-item  .contact-info h1{
+        margin-bottom: 5px;
+    }
+    /* end about */
+
+    #services .service-bottom .service-item{
+        flex-basis: 22%;
+        margin: 1.5%;
+    }
+}
+/* end media query for laptop */
