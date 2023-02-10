@@ -694,6 +694,10 @@ p{
     #header .hamburger{
         display: none;
     }
+    #header .nav-list{
+        display: flex;
+        flex-direction: row;
+    }
     #header .nav-list ul{
         position: initial;
         display: block;
@@ -719,9 +723,6 @@ p{
         padding: 40px 30px;
         min-width: 30%;
         align-items: center;
-    }
-    #contact .contact-item .icon{
-
     }
     #contact .contact-item  .contact-info{
         text-align: left;

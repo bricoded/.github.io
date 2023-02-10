@@ -20,6 +20,5 @@ document.addEventListener('scroll',()=> {
 menuItem.forEach(item=>{
     item.addEventListener('click',()=>{
         hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
     })
 })
